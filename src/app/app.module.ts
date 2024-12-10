@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { DatabaseModule } from '../database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import configurations from 'src/configurations';
+import { QuizModule } from 'src/quiz/quiz.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import configurations from 'src/configurations';
       load: [configurations],
     }),
     DatabaseModule,
+    QuizModule,
   ],
   controllers: [AppController],
   providers: [AppService],
