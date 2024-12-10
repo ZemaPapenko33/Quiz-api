@@ -44,13 +44,6 @@ export class InitialQuiz1733822538515 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    const table = await queryRunner.getTable('quizzes');
-    if (table) {
-      const foreignKeys = table.foreignKeys;
-      for (const foreignKey of foreignKeys) {
-        await queryRunner.dropForeignKey('users_courses', foreignKey);
-      }
-    }
     await queryRunner.dropTable('quizzes');
   }
 }
