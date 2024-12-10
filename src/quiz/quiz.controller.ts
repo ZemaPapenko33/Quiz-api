@@ -77,7 +77,6 @@ export class QuizController {
   @ApiResponse({
     status: 200,
     description: 'Deleted quiz by id',
-    type: [ResponseQuizDto],
   })
   @ApiResponse({ status: 400, description: 'Error when deleted a quiz' })
   async deleteQuiz(@Param('id') id: string): Promise<string> {

@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Quiz } from './quiz.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Quiz, QuizRepository])],
+  imports: [TypeOrmModule.forFeature([Quiz])],
   providers: [QuizService, QuizRepository],
   controllers: [QuizController],
 })
