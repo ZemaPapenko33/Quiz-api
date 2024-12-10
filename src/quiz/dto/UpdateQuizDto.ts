@@ -1,8 +1,8 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
 
 export class UpdateQuizDto {
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Title quiz',
     example: 'Present Perfect',
     required: false,
@@ -11,7 +11,7 @@ export class UpdateQuizDto {
   @IsOptional()
   title?: string;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     description: 'Description quiz',
     example: 'This quiz about present perfect',
     required: false,
