@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import configurations from 'src/configurations';
 import { QuizModule } from 'src/quiz/quiz.module';
 import { QuestionModule } from 'src/question/question.module';
+import { AnswerModule } from 'src/answer/answer.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { QuestionModule } from 'src/question/question.module';
     DatabaseModule,
     QuizModule,
     QuestionModule,
+    AnswerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
