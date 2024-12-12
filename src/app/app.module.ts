@@ -7,6 +7,7 @@ import configurations from 'src/configurations';
 import { QuizModule } from 'src/quiz/quiz.module';
 import { QuestionModule } from 'src/question/question.module';
 import { AnswerModule } from 'src/answer/answer.module';
+import { QuizResultAnswerModule } from 'src/quiz-result-answer/quiz-result-answer.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AnswerModule } from 'src/answer/answer.module';
     QuizModule,
     QuestionModule,
     AnswerModule,
+    QuizResultAnswerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
