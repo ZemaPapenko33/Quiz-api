@@ -8,6 +8,7 @@ import { QuizModule } from 'src/quiz/quiz.module';
 import { QuestionModule } from 'src/question/question.module';
 import { AnswerModule } from 'src/answer/answer.module';
 import { QuizResultAnswerModule } from 'src/quiz-result-answer/quiz-result-answer.module';
+import { QuizResultModule } from 'src/quiz-result/quiz-result.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { QuizResultAnswerModule } from 'src/quiz-result-answer/quiz-result-answe
     QuestionModule,
     AnswerModule,
     QuizResultAnswerModule,
+    QuizResultModule,
   ],
   controllers: [AppController],
   providers: [AppService],
