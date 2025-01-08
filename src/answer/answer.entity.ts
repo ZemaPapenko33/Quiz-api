@@ -1,8 +1,11 @@
+import { Question } from 'src/question/question.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -26,4 +29,8 @@ export class Answer {
 
   @DeleteDateColumn({ type: 'timestamp', nullable: true, name: 'deleted_at' })
   deletedAt: Date | null;
+
+  @ManyToOne(() => Question, (question) => question.answers)
+  @JoinColumn({ name: 'question_id' })
+  question: Question;
 }

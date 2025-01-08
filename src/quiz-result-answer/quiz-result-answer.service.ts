@@ -1,13 +1,13 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { quizResultAnswer } from './quizResultAnswer.entity';
+import { QuizResultAnswer } from './quizResultAnswer.entity';
 import { QuizResultAnswerRepository } from './quiz-result-answer-repository.service';
 import { CreateQuizResultAnswerDto, ResponseQuizResultAnswer } from './dto';
 
 @Injectable()
 export class QuizResultAnswerService {
   constructor(
-    @InjectRepository(quizResultAnswer)
+    @InjectRepository(QuizResultAnswer)
     private readonly quizResultAnswerRepository: QuizResultAnswerRepository,
   ) {}
 

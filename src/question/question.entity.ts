@@ -1,8 +1,13 @@
+import { Answer } from 'src/answer/answer.entity';
+import { Quiz } from 'src/quiz/quiz.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,4 +28,11 @@ export class Question {
 
   @DeleteDateColumn({ type: 'timestamp', nullable: true, name: 'deleted_at' })
   deletedAt: Date | null;
+
+  @ManyToOne(() => Quiz, (quiz) => quiz.questions)
+  @JoinColumn({ name: 'quiz_id' })
+  quiz: Quiz;
+
+  @OneToMany(() => Answer, (answer) => answer.question, { cascade: true })
+  answers: Answer[];
 }
