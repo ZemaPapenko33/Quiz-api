@@ -9,6 +9,7 @@ import { QuestionModule } from 'src/question/question.module';
 import { AnswerModule } from 'src/answer/answer.module';
 import { QuizResultAnswerModule } from 'src/quiz-result-answer/quiz-result-answer.module';
 import { QuizResultModule } from 'src/quiz-result/quiz-result.module';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { QuizResultModule } from 'src/quiz-result/quiz-result.module';
     AnswerModule,
     QuizResultAnswerModule,
     QuizResultModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

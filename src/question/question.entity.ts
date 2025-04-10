@@ -31,8 +31,8 @@ export class Question {
 
   @ManyToOne(() => Quiz, (quiz) => quiz.questions)
   @JoinColumn({ name: 'quiz_id' })
-  quiz: Quiz;
+  quizId: string;
 
-  @OneToMany(() => Answer, (answer) => answer.question, { cascade: true })
+  @OneToMany(() => Answer, (answer) => answer.questionId, { cascade: true })
   answers: Answer[];
 }

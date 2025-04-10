@@ -10,7 +10,7 @@ export class QuizResultAnswerController {
     private readonly quizResultAnswerService: QuizResultAnswerService,
   ) {}
 
-  @Get()
+  @Get(quizResultAnswerRoutes.BY_ID)
   @ApiOperation({ summary: 'Get all result answers' })
   @ApiResponse({
     status: 200,
@@ -21,25 +21,12 @@ export class QuizResultAnswerController {
     status: 400,
     description: 'Error when retrieving the list of result answers',
   })
-  async findAllQuizResultAnswers(): Promise<ResponseQuizResultAnswer[]> {
-    return await this.quizResultAnswerService.findAllQuizResultAnswers();
-  }
-
-  @Get(quizResultAnswerRoutes.BY_ID)
-  @ApiOperation({ summary: 'Get result answer by id' })
-  @ApiResponse({
-    status: 200,
-    description: 'Get result answer by id',
-    type: [ResponseQuizResultAnswer],
-  })
-  @ApiResponse({
-    status: 400,
-    description: 'Error when searched a result answer',
-  })
-  async findQuizResultAnswerById(
-    @Param('id') id: string,
-  ): Promise<ResponseQuizResultAnswer> {
-    return await this.quizResultAnswerService.findQuizResultAnswerById(id);
+  async findAllQuizResultAnswers(
+    @Param('id') quizId: string,
+  ): Promise<ResponseQuizResultAnswer[]> {
+    return await this.quizResultAnswerService.findAllQuizResultAnswersByIdQuiz(
+      quizId,
+    );
   }
 
   @Post()

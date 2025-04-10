@@ -7,10 +7,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Answer } from './answer.entity';
 import { AnswerRepository } from './answerRepository.service';
 import { CreateAnswerDto, ResponseAnswerDto, UpdateAnswerDto } from './dto';
+import { QuestionService } from 'src/question/question.service';
 
 @Injectable()
 export class AnswerService {
   constructor(
+    private readonly questionService: QuestionService,
     @InjectRepository(Answer)
     private readonly answerRepository: AnswerRepository,
   ) {}
@@ -43,9 +45,20 @@ export class AnswerService {
     createAnswerDto: CreateAnswerDto,
   ): Promise<ResponseAnswerDto> {
     try {
+      const questionExists = await this.questionService.findQuestionById(
+        createAnswerDto.questionId,
+      );
+
+      if (!questionExists) {
+        throw new NotFoundException(
+          `Quiz with ID ${createAnswerDto.questionId} does not exist`,
+        );
+      }
+
       const newAnswer = await this.answerRepository.create({
         answer: createAnswerDto.answer,
         isCorrect: createAnswerDto.isCorrect,
+        questionId: createAnswerDto.questionId,
       });
       return await this.answerRepository.save(newAnswer);
     } catch (error) {

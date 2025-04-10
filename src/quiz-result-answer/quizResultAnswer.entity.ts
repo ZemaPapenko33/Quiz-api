@@ -1,5 +1,6 @@
 import { Answer } from 'src/answer/answer.entity';
 import { Question } from 'src/question/question.entity';
+import { Quiz } from 'src/quiz/quiz.entity';
 import {
   Column,
   CreateDateColumn,
@@ -22,9 +23,13 @@ export class QuizResultAnswer {
 
   @OneToOne(() => Question, (question) => question.id)
   @JoinColumn({ name: 'question_id' })
-  question: Question;
+  questionId: string;
 
   @OneToOne(() => Answer, (answer) => answer.id)
   @JoinColumn({ name: 'answer_id' })
-  answer: Answer;
+  answerId: string;
+
+  @OneToOne(() => Quiz, (quiz) => quiz.id)
+  @JoinColumn({ name: 'quiz_id' })
+  quiz: Quiz;
 }

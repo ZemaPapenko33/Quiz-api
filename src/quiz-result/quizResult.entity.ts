@@ -1,10 +1,13 @@
 import { QuizResultAnswer } from 'src/quiz-result-answer/quizResultAnswer.entity';
+import { Quiz } from 'src/quiz/quiz.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -31,4 +34,8 @@ export class quizResult {
     { cascade: true },
   )
   answers: QuizResultAnswer[];
+
+  @OneToOne(() => Quiz, (quiz) => quiz.id)
+  @JoinColumn({ name: 'quiz_id' })
+  quizId: string;
 }
