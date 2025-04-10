@@ -29,6 +29,6 @@ export class Quiz {
   @DeleteDateColumn({ type: 'timestamp', nullable: true, name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @OneToMany(() => Question, (question) => question.quiz, { cascade: true })
+  @OneToMany(() => Question, (question) => question.quizId, { cascade: true })
   questions: Question[];
 }

@@ -11,10 +11,12 @@ import {
   ResponseQuestionDto,
   UpdateQuestionDto,
 } from './dto';
+import { QuizService } from 'src/quiz/quiz.service';
 
 @Injectable()
 export class QuestionService {
   constructor(
+    private readonly quizService: QuizService,
     @InjectRepository(Question)
     private readonly questionRepository: QuestionRepository,
   ) {}
@@ -47,8 +49,19 @@ export class QuestionService {
     createQuestionDto: CreateQuestionDto,
   ): Promise<ResponseQuestionDto> {
     try {
+      const quizExists = await this.quizService.findQuizById(
+        createQuestionDto.quizId,
+      );
+
+      if (!quizExists) {
+        throw new NotFoundException(
+          `Quiz with ID ${createQuestionDto.quizId} does not exist`,
+        );
+      }
+
       const newQuestion = this.questionRepository.create({
         question: createQuestionDto.question,
+        quizId: createQuestionDto.quizId,
       });
 
       return await this.questionRepository.save(newQuestion);

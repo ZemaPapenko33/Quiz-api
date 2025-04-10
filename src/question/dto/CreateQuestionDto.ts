@@ -8,4 +8,11 @@ export class CreateQuestionDto {
   })
   @IsString()
   question: string;
+
+  @ApiProperty({
+    description: 'the quiz to which this question refers',
+    example: '21890821-njksd-1jhh2h3gh',
+  })
+  @IsString()
+  quizId: string;
 }

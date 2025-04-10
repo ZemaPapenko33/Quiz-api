@@ -9,4 +9,11 @@ export class CreateAnswerDto {
   @ApiProperty({ description: 'is correct answer', example: 'False' })
   @IsBoolean()
   isCorrect: boolean;
+
+  @ApiProperty({
+    description: 'the Question to which this answer refers',
+    example: 'iwiwq98-0jjjsa92-asas',
+  })
+  @IsString()
+  questionId: string;
 }
